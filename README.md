@@ -162,8 +162,8 @@ sass style.scss:style.css --style compressed
 
 # 编译Sass的软件
 
-    我使用的编译Sass的软件为 `koala` ，是一款界面简洁的编译软件
-    下载好windows版本[koala](https://github.com/oklai/koala/releases/download/v2.2.0/KoalaSetup.exe)之后
-    在设置中调成简体中文，然后将想要转换的单个文件或这个项目导入，可以在右侧看到加载出来的文件，然后点击文件，可以选择`自动编译`
-    这样就会在编译.scss文件的时候自动生成.css文件，并且监听实时编译
-    更多关于koala的用法，前往官网查看 [koala 官网](http://koala-app.com/index-zh.html "koala 官网")
+我使用的编译Sass的软件为 `koala` ，是一款界面简洁的编译软件
+下载好windows版本[koala](https://github.com/oklai/koala/releases/download/v2.2.0/KoalaSetup.exe)之后，<br>
+在设置中调成简体中文，然后将想要转换的单个文件或这个项目导入，可以在右侧看到加载出来的文件，<br>
+然后点击文件，可以选择 ` 自动编译 ` ,这样就会在编译.scss文件的时候自动生成.css文件，并且监听实时编译<br>
+更多关于koala的用法，前往官网查看 [koala 官网](http://koala-app.com/index-zh.html "koala 官网")
