@@ -11,6 +11,9 @@ window下安装SASS首先需要安装Ruby，先从官网下载Ruby并安装。�
 
 但因为国内网络的问题导致gem源间歇性中断因此我们需要更换gem源。`（https://ruby.taobao.org/）`
 
+----
+(淘宝好像已经不维护ruby的gem源了，所以可能会出现更换源失败，gem源相当于ruby的插件一样)
+
 
 #### 1.删除原gem源
 ```cmd
