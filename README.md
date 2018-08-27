@@ -9,7 +9,7 @@ window下安装SASS首先需要安装Ruby，先从官网下载Ruby并安装。�
 
 测试Ruby是否安装成功：`ruby -v`
 
-但因为国内网络的问题导致gem源间歇性中断因此我们需要更换gem源。`（https://ruby.taobao.org/）`
+但因为国内网络的问题导致gem源间歇性中断因此我们需要更换gem源。`（https://gems.ruby-china.com/）`
 
 ----
 (淘宝好像已经不维护ruby的gem源了，所以可能会出现更换源失败，gem源相当于ruby的插件一样)
@@ -20,9 +20,9 @@ window下安装SASS首先需要安装Ruby，先从官网下载Ruby并安装。�
 gem sources --remove https://rubygems.org/
 ```
 
-#### 2.添加国内淘宝源
+#### 2.添加国内源
 ```cmd
-gem sources -a https://ruby.taobao.org/
+gem sources -a https://gems.ruby-china.com/
 ```
 
 #### 3.打印是否替换成功
@@ -33,7 +33,7 @@ gem sources -l
 #### 4.更换成功后打印如下
 ```cmd
 *** CURRENT SOURCES ***
-https://ruby.taobao.org/
+https://gems.ruby-china.com/
 ```
 
 
