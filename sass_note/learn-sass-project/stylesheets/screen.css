@@ -4,7 +4,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /*sass 默认使用的编码格式为UTF-8*/
-/**
+/*!
  * CONTENTS
  * 
  * SETTINGS
@@ -86,65 +86,321 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 48, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 .headline {
   font-family: Braggadocio, Arial, Helvetica, sans-serif;
 }
 
-/* line 52, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 .main-sec {
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-box-shadow: 1px 1px 3px 2px #fcfefc;
+  box-shadow: 1px 1px 3px 2px #fcfefc;
 }
-/* line 55, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 .main-sec .headline {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
 }
-/* line 62, ../sass/screen.scss */
+/* line 78, ../sass/screen.scss */
 .main-sec .detail {
   font-size: 12px;
 }
 
-/* line 68, ../sass/screen.scss */
-a:hover {
-  color: blue;
-}
-
-/* line 73, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
 .col-6, .serious-error {
   width: 50%;
   float: left;
 }
-/* line 76, ../sass/screen.scss */
+/* line 86, ../sass/screen.scss */
 .col-6:hover, .serious-error:hover {
   background-color: #f5f5f5;
 }
 
-/* line 81, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 .col {
   width: 50%;
   float: left;
 }
 
-/* line 85, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
 .error, .serious-error {
   font-size: 12px;
 }
 
-/* line 89, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 .error, .serious-error {
   color: #f00;
 }
 
-/* line 93, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 .serious-error {
   border: 1px #f00;
 }
 
 @media (min-width: 768px) {
-  /* line 103, ../sass/screen.scss */
+  /* line 113, ../sass/screen.scss */
   .col-sm {
     width: 50%;
     float: left;
   }
+}
+
+/* line 124, ../sass/screen.scss */
+.main-sec-headline {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+/* line 130, ../sass/screen.scss */
+.main-sec-detail {
+  font-size: 12px;
+}
+
+/* line 140, ../sass/screen.scss */
+a {
+  text-decoration: none;
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+}
+/* line 4, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_hover-link.scss */
+a:hover, a:focus {
+  text-decoration: underline;
+}
+/* line 6, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_unstyled-link.scss */
+a:active, a:focus {
+  outline: none;
+}
+
+/* line 149, ../sass/screen.scss */
+.ul-li-no-bullets {
+  list-style: none;
+}
+/* line 11, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_bullets.scss */
+.ul-li-no-bullets li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+}
+
+/* line 153, ../sass/screen.scss */
+.li-horizontal-list {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 62, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_horizontal-list.scss */
+.li-horizontal-list li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+  white-space: nowrap;
+  float: right;
+  display: inline;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+/* line 49, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_horizontal-list.scss */
+.li-horizontal-list li:first-child, .li-horizontal-list li.first {
+  padding-right: 0;
+}
+/* line 50, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_horizontal-list.scss */
+.li-horizontal-list li:last-child {
+  padding-left: 0;
+}
+/* line 52, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_horizontal-list.scss */
+.li-horizontal-list li.last {
+  padding-left: 0;
+}
+
+/* line 157, ../sass/screen.scss */
+.li-inline-list {
+  list-style-type: none;
+}
+/* line 6, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_inline-list.scss */
+.li-inline-list, .li-inline-list li {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+/* line 161, ../sass/screen.scss */
+.li-inline-block-list {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 49, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_inline-block-list.scss */
+.li-inline-block-list li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  white-space: nowrap;
+}
+
+/* line 170, ../sass/screen.scss */
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -moz-binding: url('xml/ellipsis.xml#ellipsis');
+}
+
+/* line 174, ../sass/screen.scss */
+.text-force-wrap {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -hp-pre-wrap;
+  word-wrap: break-word;
+}
+
+/* line 178, ../sass/screen.scss */
+.text-nowrap {
+  white-space: nowrap;
+}
+
+/* line 182, ../sass/screen.scss */
+.text-hide {
+  font: 0/0 serif;
+  text-shadow: none;
+  color: transparent;
+}
+
+/* line 188, ../sass/screen.scss */
+.btn-find {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  text-transform: capitalize;
+  background-image: url(https://raw.githubusercontent.com/myworldlh/Images-Warehouse/master/pictures/%E5%A5%B6%E6%B2%B9.JPG);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+/* line 192, ../sass/screen.scss */
+.btn-replace-text-with-dimensions {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  text-transform: capitalize;
+  background-image: url('../images/CR7-head.jpg?1528764749');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 1600px;
+  height: 900px;
+}
+
+/* line 106, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
+html {
+  font-size: 100%;
+  line-height: 1.5em;
+}
+
+/* line 208, ../sass/screen.scss */
+h1 {
+  font-size: 3em;
+  line-height: 1.5em;
+}
+
+/* line 211, ../sass/screen.scss */
+h2 {
+  font-size: 2.25em;
+  line-height: 1.33333em;
+}
+
+/* line 214, ../sass/screen.scss */
+h3 {
+  font-size: 1.5em;
+  line-height: 2em;
+}
+
+/* line 217, ../sass/screen.scss */
+h4 {
+  font-size: 1.3125em;
+  line-height: 2.28571em;
+}
+
+/* line 220, ../sass/screen.scss */
+h5 {
+  font-size: 1.125em;
+  line-height: 1.33333em;
+}
+
+/* line 223, ../sass/screen.scss */
+h6 {
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+/* line 226, ../sass/screen.scss */
+p {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+/**helper模块**/
+/* line 238, ../sass/screen.scss */
+.artical-logo {
+  background-image: url('../images/CR7-head.jpg?1528764749');
+}
+
+@font-face {
+  font-family: "FontAwesome-webfont.eot";
+  src: url('../fonts/FontAwesome-webfont.ttf?1371483119');
+  src: url('../fonts/FontAwesome-webfont.ttf?&1371483119#iefix') format('embedded-opentype'), "FontAwesome-webfont.svg";
+  font-weight: "FontAwesome-webfont.woff";
+  font-style: "FontAwesome-webfont.otf";
+}
+/* line 249, ../sass/screen.scss */
+.CR7-head {
+  width: 1600px;
+  height: 900px;
+}
+
+/* line 260, ../sass/screen.scss */
+p.bar, div.bar, a.bar {
+  color: #f00;
+}
+
+/* line 15, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/_print.scss */
+.print-only {
+  display: none;
+}
+
+/* line 272, ../sass/screen.scss */
+.clearfix {
+  *zoom: 1;
+}
+/* line 22, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* line 285, ../sass/screen.scss */
+.float {
+  float: left;
+  display: inline;
 }

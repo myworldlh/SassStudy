@@ -5,7 +5,7 @@
 
 /*sass 默认使用的编码格式为UTF-8*/
 
-/**
+/*!
  * CONTENTS
  * 
  * SETTINGS
@@ -42,8 +42,23 @@
 
 // 使用reset的确定是重置了所以的默认样式，如果要使用默认样式还需要再设置回来，不能统一不同浏览器的默认差异，所以当值资源的浪费。
 // 使用compass的插件机制，用normalize统一浏览器的默认差异，来替换reset。
+// normalize 有八大模块，分别对不同类型的标签进行样式修饰，可以通过@import "normalize/base"等来单独引用一部分样式修饰
+// @import "normalize" 则引入全部的八大模块。
 
-@import "variables",  "mixin", "compass/reset";
+// normalize是分模块的，而reset则是使用@mixin方式引入
+// "compass/reset"实际上是通过 "compass/reset/utilities"后，再@include gloable-reset操作，两者的效果是相同的
+
+@import "variables",  "mixin";
+//@import "normalize";
+@import "compass/reset";
+@import "compass/css3"; // 提供css3的mixin
+
+// 浏览器支持
+@import "compass/support";
+// 配置浏览器支持：通过mixin box-shadow()生成的前缀中就只有-webkit了
+$supported-browsers: chrome, ie;
+// 支持的浏览器版本
+$browser-minimum-versions:("ie": "6");
 
 .headline {
     font-family: $headline-ff;
@@ -51,6 +66,7 @@
 
 .main-sec {
     font-family: $main-sec-ff;
+    @include box-shadow(1px 1px 3px 2px #fcfefc);
     
     .headline{
         font: {
@@ -61,12 +77,6 @@
 
     .detail{
         font-size: 12px;
-    }
-}
-
-a{
-    &:hover{
-        color: blue;
     }
 }
 
@@ -102,4 +112,177 @@ a{
 
 .col-sm{
     @include col-sm();
+}
+
+// 代码的解析是按照从右向左的方式解析，会从内层一直想上找父选择器，直到找到html，所以会造成资源的浪费，
+// 而且嵌套会影响选择器的权重，造成对页面结构的依赖，
+// 如果给每个元素添加自己的class，则没有了嵌套样式表维护起来清晰，所以可以引入@at-root。
+// @at-root指定被输入的样式输出到样式表的顶层，就解决了这个问题。
+
+.main-sec{
+    @at-root{
+        .main-sec-headline{
+            font: {
+                family: $main-sec-ff;
+                size: 14px;
+            }
+        }
+        .main-sec-detail{
+            font-size: 12px;
+        }
+    }
+}
+
+// @import "compass/reset!";
+
+@import "compass/typography/links";
+
+a{
+    @include hover-link;
+    // @include link-colors(#c0c,#c00,#0c0,#00c,#cc0);
+    @include unstyled-link();
+}
+
+@import "compass/typography/lists";
+
+// li 默认样式
+.ul-li-no-bullets{
+    @include no-bullets();
+}
+// li左浮动
+.li-horizontal-list{
+    @include horizontal-list(2px, right);
+}
+// li inline
+.li-inline-list{
+    @include inline-list();
+}
+// li inline-block
+.li-inline-block-list{
+    @include inline-block-list();
+}
+
+@import "compass/typography/text";
+
+// 超出显示...
+// 单独配置低版本Firefox对ellipsis的兼容，需要先下载插件: compass install compass/ellipsis，生成对应的xml文件
+$use-mozilla-ellipsis-binding: true;
+.text-ellipsis{
+    @include ellipsis();
+}
+
+.text-force-wrap{
+    @include force-wrap();
+}
+
+.text-nowrap{
+    @include nowrap();
+}
+// 背景中有文字了，就需要对文字进行隐藏
+.text-hide{
+    // 两种隐藏方式
+    //@include hide-text();
+    @include squish-text();
+}
+// 隐藏字并且设置图片路径
+.btn-find{
+    @include replace-text("https://raw.githubusercontent.com/myworldlh/Images-Warehouse/master/pictures/%E5%A5%B6%E6%B2%B9.JPG");
+}
+
+.btn-replace-text-with-dimensions{
+    @include replace-text-with-dimensions("CR7-head.jpg"); // 不知道为什么绝对路径不行
+}
+
+// 垂直韵律是让所有元素的高，是基准高的整数倍，所以要先定义行高和主体文本的行间距和字体大小
+@import "compass/typography/vertical_rhythm";
+
+$base-font-size: 16px;
+$base-line-height: 24px;  // 16 * 1.5  文本间距一般是文字大小的1.4或1.5倍
+
+@include establish-baseline();  // 为给定的font-size建立字体基线
+
+// body{
+//     @include debug-vertical-alignment;  // 辅助背景线
+// }
+
+h1{
+    @include adjust-font-size-to(48px);  // 自动计算字体和行高的倍率em
+}
+h2{
+    @include adjust-font-size-to(36px);  // 自动计算字体和行高的倍率em
+}
+h3{
+    @include adjust-font-size-to(24px);  // 自动计算字体和行高的倍率em
+}
+h4{
+    @include adjust-font-size-to(21px);  // 自动计算字体和行高的倍率em
+}
+h5{
+    @include adjust-font-size-to(18px);  // 自动计算字体和行高的倍率em
+}
+h6{
+    @include adjust-font-size-to(16px);  // 自动计算字体和行高的倍率em
+}
+p{
+    @include adjust-font-size-to(16px);  // 自动计算字体和行高的倍率em
+    @include leader(); // margin-top  几倍于基线的高，默认1倍
+    @include trailer(); // margin-bottom  几倍于基线的高，默认1倍
+}
+
+/**helper模块**/
+
+// image-url():会将图片的路径自动加载出来，并且自动添加cache buster缓存克星，解决更换图片的缓存问题
+// 图片的路径和config.rb中的配置有关，详情见config.rb
+// 对于图片的路径配置、cache配置等，参考helpers模块
+
+.artical-logo{
+    background-image: image-url("CR7-head.jpg");
+}
+
+// 查看当前的工作环境（develop开发环境和product生产环境）
+//@debug compass-env();
+
+// 引入font字体，同时加入cache buster
+@include font-face('FontAwesome-webfont.eot','FontAwesome-webfont.svg','FontAwesome-webfont.ttf','FontAwesome-webfont.woff','FontAwesome-webfont.otf');
+
+// 计算图片的高度和宽度
+.CR7-head{
+    width: image-width('CR7-head.jpg');
+    height: image-height('CR7-head.jpg');
+}
+
+// 将图片转换成base64编码，对于小图片来说有用，减少请求次数，但是对于大文件来说反而消耗了更多的cpu内存等资源
+.bg-base64{
+    //background-image: inline-image('CR7-head.jpg');
+}
+
+// 组合选择器append-selecor
+#{append-selector("p,div,a",".bar")}{
+    color: #f00;
+}
+
+// utilities 模块
+// print
+@import "compass/utilities/print";
+@include print-utilities(screen);
+
+// general
+@import "compass/utilities/general";
+// 清除浮动
+.clearfix{
+    // @include clearfix;
+    // @include pie-clearfix; // 防止低版本不支持display: table;可以用下面的mixin
+    @include legacy-pie-clearfix;
+}
+
+// float浮动
+// $browser-minimum-versions为支持浏览器版本的配置，如果配置了支持ie6，compass会自动给我们结果ie6 float双倍margin的问题
+// 解决这个问题的方法是添加了display: inline;
+// 有两种属性，一种是不影响布局如阴影box-shadow，一种影响布局如box-sizing，compass还配置了相关的阀值
+// 第一种阀值为1%，第二种为0.1%，如果当前浏览器阀值大于compass规定阀值，就说明会影响到页面布局，则会生成对应的hack，如下面的display: inline;
+// 查看阀值： @debug omitted-usage("ie", "6"); 0.0093
+
+//@debug omitted-usage("ie", "6"); 
+.float{
+    @include float(left);
 }
