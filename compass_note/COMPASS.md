@@ -3,6 +3,8 @@
 #### compass是sass的二次开发工具，[compass官网](http://compass-style.org)
 
 #### 查看compass版本
+```gem install compass```
+#### 查看compass版本
 ```compass -v```
 #### compass 创建项目
 ```compass create 项目名```
