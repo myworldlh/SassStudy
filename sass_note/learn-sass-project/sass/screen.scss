@@ -2,6 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+ /*页面引入css样式如上：<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />*/
 
 /*sass 默认使用的编码格式为UTF-8*/
 
@@ -10,12 +11,13 @@
  * 
  * SETTINGS
  * variabes....................变量集中存储文件
- * mixin.......................minxin集中存储文件
+ * mixin.......................mixin集中存储文件
  *
  * TOOLS
  *
- * CONPONENTS
+ * COMPONENTS
  * reset.......................compass内置浏览器重置样式
+ * normalize...................normalize插件，统一浏览器样式差异
  *
  * BUSINESS
  *
@@ -23,9 +25,9 @@
  * screen......................针对当前站点主页的样式修饰
  */
 
-// 所有下划线的scss文件是不进行编译的，常用于定义变量或者方法。
+// 所有下划线的scss文件不会单独编译，常用于定义变量或者方法以供被其他sass文件引入调用。
 // import引入的文件两个遵循既定规则：1.不带后缀的文件自动添加.scss或.sass。2.同一目录下局部文件和非局部文件不能重名。
-// 所以import局部文件的时候，variables不需要加入下划线也不需要后缀名
+// 所以import局部文件的时候，variables不需要加入下划线也不需要后缀名(下划线写不写无所谓)
 // screen.scss为宿主文件，_variables.scss为局部文件
 
 // 如果不想使用sass的import，就要使用css的import的话，要满足四点要求之一：
@@ -37,10 +39,10 @@
 // 引入多个文件时，中间用逗号隔开
 
 // "compass/reset"是怎么被引入的？
-// sass文件时以当前宿主文件进行寻路的，sass提供了一个load_path选项，可以添加额外的寻路路径，
+// sass文件是以当前宿主文件进行寻路的，sass提供了一个load_path选项，可以添加额外的寻路路径，
 // 通过compass可以配置load_path，将compass目录加入到了寻路目录当中，而reset则是compass提供的一个重置模块
 
-// 使用reset的确定是重置了所以的默认样式，如果要使用默认样式还需要再设置回来，不能统一不同浏览器的默认差异，所以当值资源的浪费。
+// 使用reset的确定是重置了所以的默认样式，如果要使用默认样式还需要再设置回来，不能统一不同浏览器的默认差异，可能造成资源的浪费。
 // 使用compass的插件机制，用normalize统一浏览器的默认差异，来替换reset。
 // normalize 有八大模块，分别对不同类型的标签进行样式修饰，可以通过@import "normalize/base"等来单独引用一部分样式修饰
 // @import "normalize" 则引入全部的八大模块。
@@ -51,7 +53,7 @@
 @import "variables",  "mixin";
 //@import "normalize";
 @import "compass/reset";
-@import "compass/css3"; // 提供css3的mixin
+@import "compass/css3"; // 提供css3的mixin，引入css3相当于默认引入了support模块
 
 // 浏览器支持
 @import "compass/support";
@@ -80,11 +82,13 @@ $browser-minimum-versions:("ie": "6");
     }
 }
 
+// &将替换成外层父选择器，如果使用多层嵌套，最外层的父选择器会被完整地替换给每一层。
 .col-6{
     @include col-6;
-
-    &:hover{
-        background-color: #f5f5f5;
+    a {
+        &:hover{
+            background-color: #f5f5f5;
+        }
     }
 }
 
@@ -107,7 +111,7 @@ $browser-minimum-versions:("ie": "6");
 
 // extend 不能继承嵌套样式: @extend .a .b;
 // %font12:占位符，不会出现在编译后的css中
-// extend嵌套使用，子会继承父及父辈的所有继承
+// extend嵌套使用，子会继承父及祖父辈的所有继承
 // extend多个继承中使用逗号分隔：@extend .a, .b;
 
 .col-sm{
@@ -116,8 +120,8 @@ $browser-minimum-versions:("ie": "6");
 
 // 代码的解析是按照从右向左的方式解析，会从内层一直想上找父选择器，直到找到html，所以会造成资源的浪费，
 // 而且嵌套会影响选择器的权重，造成对页面结构的依赖，
-// 如果给每个元素添加自己的class，则没有了嵌套样式表维护起来清晰，所以可以引入@at-root。
-// @at-root指定被输入的样式输出到样式表的顶层，就解决了这个问题。
+// 如果给每个元素添加自己的class，则没有嵌套样式表维护起来清晰。
+// @at-root指定被输入的样式输出到样式表的顶层，这样就可以用自己独有的选择器写在嵌套里了，就解决了这个问题。
 
 .main-sec{
     @at-root{
@@ -170,11 +174,11 @@ $use-mozilla-ellipsis-binding: true;
 .text-ellipsis{
     @include ellipsis();
 }
-
+// 文本换行
 .text-force-wrap{
     @include force-wrap();
 }
-
+// 文本不换行
 .text-nowrap{
     @include nowrap();
 }
@@ -188,7 +192,7 @@ $use-mozilla-ellipsis-binding: true;
 .btn-find{
     @include replace-text("https://raw.githubusercontent.com/myworldlh/Images-Warehouse/master/pictures/%E5%A5%B6%E6%B2%B9.JPG");
 }
-
+// 根据背景图片大小规定元素宽高，同时隐藏字
 .btn-replace-text-with-dimensions{
     @include replace-text-with-dimensions("CR7-head.jpg"); // 不知道为什么绝对路径不行
 }
@@ -251,7 +255,7 @@ p{
     height: image-height('CR7-head.jpg');
 }
 
-// 将图片转换成base64编码，对于小图片来说有用，减少请求次数，但是对于大文件来说反而消耗了更多的cpu内存等资源
+// 将图片转换成base64编码，对于小图片来说有用（合图），减少请求次数，但是对于大文件来说反而消耗了更多的cpu内存等资源
 .bg-base64{
     //background-image: inline-image('CR7-head.jpg');
 }
@@ -286,3 +290,6 @@ p{
 .float{
     @include float(left);
 }
+
+// 合图
+@import "icons";

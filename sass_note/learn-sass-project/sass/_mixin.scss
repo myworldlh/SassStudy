@@ -8,7 +8,9 @@
     float: left;
 }
 
-@mixin col-sm($width:50%){
+// media编译后会自动到顶层
+// type-of:数据类型，not、and、or为逻辑运算，unitless:是否没有单位，unit:输出单位，percentage:转换为百分比
+@mixin col-sm($width:50%){ // 50%为默认值
     @if type-of($width) != number{
         @error "width必须是一个数值类型，你输入的width是：#{$width}";
     }
@@ -26,6 +28,3 @@
         float: left;
     }
 }
-
-// media编译后会自动到顶层
-// type-of:数据类型，not、and、or为逻辑运算，unitless:是否没有单位，unit:输出单位，percentage:转换为百分比

@@ -1,0 +1,50 @@
+// 合图sprites
+@import "compass/utilities/sprites";
+// sprites后，当前引入图片路径为images下，所以直接引入其中的合图路径即可
+
+// $tools-sprite-dimensions是否指定元素大小，默认宽高为背景图片宽高
+$tools-sprite-dimensions: true;
+
+// 修改合图布局方式
+$tools-layout:smart;
+
+// 引入图片后直接生成文件夹下的合图，并且添加了cache buster，改变合图文件后自动更新
+// 可以通过命令行中输入'compass sprite "tools/*.png"'，生成sass下sprites中的scss文件
+@import "tools/*.png";
+
+// 调用，生成以“目录名-图片文”为类名的css样式表
+// all-文件路径-sprites，
+@include all-tools-sprites();
+
+// 不叫图片名称的元素想用背景图
+/*
+目标元素{
+    @include 路径名-sprite(背景图文件名);
+}
+*/
+.myself-class{
+    @include tools-sprite('msg');
+}
+
+// 对于按钮样式的背景图，hover和active的不同背景图可以这样设置
+// 在文件名后面加上'_active,_hover'，就可以生成对应选择器下的hover和active伪类
+// 实例如tools下的checked.png,checked_hover.png,checked_active文件。
+// 注意：这里一定要有最初的checked.png，如果只有checked_hover.png,checked_active则不会生成对应的伪类样式
+// 只会生成对应文件名的类的背景图样式
+
+// 不使用默认的_hover和_active来命名伪类
+// 使用$disable-magic-sprite-selectors: true;来关闭特性
+// 注意：关闭特性后，*_hover.png和*_active.png不会生成背景css，所以还需要修改文件名，在去指定hover和active伪类，感觉多此一举，不推荐关闭特性
+
+// Helper-Sprites中提供了很多合图的参数方法，可以用于自定义合图方法
+// sprite-map(目录)用于返回合图后的文件目录
+
+@import "retina";
+
+// 高清和非高清的sprite映射
+$sprites: sprite-map('retina-version/retina/*.png');
+$sprites2x: sprite-map('retina-version/retina2x/*.png');
+
+.icon-smile{
+    @include retina_sprite(smile, true, true);
+}

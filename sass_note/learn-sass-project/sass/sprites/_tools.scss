@@ -1,0 +1,113 @@
+@import "compass/utilities/sprites/base";
+
+// General Sprite Defaults
+// You can override them before you import this file.
+$tools-sprite-dimensions : false !default;
+$tools-use-percentages   : false !default;
+$tools-position          : 0% !default;
+$tools-spacing           : 0 !default;
+$tools-repeat            : no-repeat !default;
+$tools-prefix            : '' !default;
+$tools-clean-up          : true !default;
+$tools-layout            : vertical !default;
+$tools-inline            : false !default;
+$tools-sort-by           : 'none' !default;
+$tools-class-separator   : $default-sprite-separator !default;
+$tools-sprite-base-class : ".tools#{$tools-class-separator}sprite" !default;
+
+  
+ // These variables control the generated sprite output
+ // You can override them selectively before you import this file.
+ 
+   $tools-checked-position: $tools-position !default;
+   $tools-checked-spacing:  $tools-spacing !default;
+   $tools-checked-repeat:   $tools-repeat !default;
+ 
+   $tools-msg-position: $tools-position !default;
+   $tools-msg-spacing:  $tools-spacing !default;
+   $tools-msg-repeat:   $tools-repeat !default;
+ 
+   $tools-unchecked-position: $tools-position !default;
+   $tools-unchecked-spacing:  $tools-spacing !default;
+   $tools-unchecked-repeat:   $tools-repeat !default;
+ 
+   $tools-vip-position: $tools-position !default;
+   $tools-vip-spacing:  $tools-spacing !default;
+   $tools-vip-repeat:   $tools-repeat !default;
+ 
+
+ $tools-sprites: sprite-map("tools/*.png",
+ 
+   $tools-checked-position: $tools-checked-position, 
+   $tools-checked-spacing:  $tools-checked-spacing, 
+   $tools-checked-repeat:   $tools-checked-repeat,
+ 
+   $tools-msg-position: $tools-msg-position, 
+   $tools-msg-spacing:  $tools-msg-spacing, 
+   $tools-msg-repeat:   $tools-msg-repeat,
+ 
+   $tools-unchecked-position: $tools-unchecked-position, 
+   $tools-unchecked-spacing:  $tools-unchecked-spacing, 
+   $tools-unchecked-repeat:   $tools-unchecked-repeat,
+ 
+   $tools-vip-position: $tools-vip-position, 
+   $tools-vip-spacing:  $tools-vip-spacing, 
+   $tools-vip-repeat:   $tools-vip-repeat,
+ 
+ $layout   : $tools-layout,
+ $cleanup  : $tools-clean-up,
+ $spacing  : $tools-spacing,
+ $position : $tools-position,
+ $sort-by  : $tools-sort-by
+ );
+
+
+// All sprites should extend this class
+// The tools-sprite mixin will do so for you.
+@if $tools-inline {
+  #{$tools-sprite-base-class} {
+    background-image: inline-sprite($tools-sprites);
+  } 
+} @else {
+  #{$tools-sprite-base-class} {
+    background-image: sprite-url($tools-sprites);
+    background-repeat: no-repeat;
+  }
+}
+//sass functions to return the dimensions of a sprite image as units
+
+  @function tools-sprite-width($name) {
+    @return sprite-width($tools-sprites, $name);
+  }
+
+  @function tools-sprite-height($name) {
+    @return sprite-height($tools-sprites, $name);
+  }
+
+
+// Use this to set the dimensions of an element
+// based on the size of the original image.
+@mixin tools-sprite-dimensions($name) {
+  @include sprite-dimensions($tools-sprites, $name)
+}
+
+// Move the background position to display the sprite.
+@mixin tools-sprite-position($name, $offset-x: 0, $offset-y: 0, $use-percentages: $tools-use-percentages) {
+  @include sprite-background-position($tools-sprites, $name, $offset-x, $offset-y, $use-percentages)
+}
+
+// Extends the sprite base class and set the background position for the desired sprite.
+// It will also apply the image dimensions if $dimensions is true.
+@mixin tools-sprite($name, $dimensions: $tools-sprite-dimensions, $offset-x: 0, $offset-y: 0, $use-percentages: $tools-use-percentages, $separator: $tools-class-separator) {
+  @extend #{$tools-sprite-base-class};
+  @include sprite($tools-sprites, $name, $dimensions, $offset-x, $offset-y, $use-percentages, $separator: $separator);
+}
+
+@mixin tools-sprites($sprite-names, $dimensions: $tools-sprite-dimensions, $prefix: sprite-map-name($tools-sprites), $offset-x: 0, $offset-y: 0, $use-percentages: $tools-use-percentages, $separator: $tools-class-separator) {
+  @include sprites($tools-sprites, $sprite-names, $tools-sprite-base-class, $dimensions, $prefix, $offset-x, $offset-y, $use-percentages, $separator: $separator)
+}
+
+// Generates a class for each sprited image.
+@mixin all-tools-sprites($dimensions: $tools-sprite-dimensions, $prefix: sprite-map-name($tools-sprites), $offset-x: 0, $offset-y: 0, $use-percentages: $tools-use-percentages, $separator: $tools-class-separator) {
+  @include tools-sprites(checked msg unchecked vip, $dimensions, $prefix, $offset-x, $offset-y, $use-percentages, $separator: $separator);
+}

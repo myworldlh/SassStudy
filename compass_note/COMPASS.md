@@ -527,3 +527,6 @@ $browser-minimum-versions:("ie":"6");
 关于兼容ie6等操作，详情见[http://compass-style.org/reference/compass/utilities/general/hacks/](http://compass-style.org/reference/compass/utilities/general/hacks/)
 
 #### Sprites模块
+合图工具
+```@import "compass/utilities/sprites";```
+详细配置见sass_note → learn-sass-project → sass → _icon.scss
