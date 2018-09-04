@@ -1,0 +1,74 @@
+@import "variables", "mixin";
+
+@import "normalize"; // reset
+@import "compass"; // 引入compass除reset和layout模块
+
+$disable-magic-sprite-selectors: true;
+$demo_menu-sprite-dimensions: true;
+// $demo_menu-layout:smart;
+
+@import "demo_menu/*.png";
+@include all-demo_menu-sprites();
+
+.container{
+    background-color: #e3e3e3;
+    padding: 45px 0;
+
+    @at-root { // 独立出元素
+        .menu-content{
+            margin: 0 auto;
+            width: 1200px;
+    
+            @at-root {
+                .menu-list{
+                    @include horizontal-list(false, left);
+                    @include legacy-pie-clearfix; // 清除浮动
+                    overflow: unset;
+
+                    & li{
+                        margin: 0 15px;
+                        padding: 14px 30px 15px 25px;
+                        width: 118px;
+                        cursor: pointer;
+                        @include border-radius(4px);
+                        color: $menu-color-default;
+                        background-color: $menu-bgcolor-default;
+                        border: 1px solid $menu-border-default;
+                        @include box-shadow(2px 2px 2px #d9d9d9);
+                        @include single-transition(color background-color, 0.3s, linear);
+                    }
+                    & li:first-child{
+                        margin-left: 0;
+                    }
+                    & li:last-child{
+                        margin-right: 0;
+                    }
+                    & li.active, & li:hover{
+                        color: $menu-color-hover;
+                        background-color: $menu-bgcolor-hover;
+                        border: 1px solid $menu-border-hover;
+                        @include box-shadow(2px 2px 2px #C1C0C0);
+                    }
+                    & li .icon{
+                        @include float(left);
+                        display: block;
+                    }
+                    & li .title{
+                        height: 35px;
+                        line-height: 36px;
+                        font-size: 16px;
+                        text-indent: 20px;
+                        @include inline-block();
+                    }
+                    & li.active, & li:hover {
+                        @each $key, $value in $menu-map{
+                            .icon.#{$key}{
+                                background-position: $value;
+                            }
+                       }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,2 +1,19 @@
 $headline-ff: Braggadocio, Arial, Helvetica, sans-serif;
 $main-sec-ff: Arial, Helvetica, sans-serif;
+
+$menu-color-default: #333;
+$menu-bgcolor-default: #fff;
+$menu-border-default: #dedede;
+$menu-color-hover: #fff;
+$menu-bgcolor-hover: #c4261e;
+$menu-border-hover: #c4261e;
+
+// hover img-position
+$menu-map: (
+    "demo_menu-car": 0 -35px,
+    "demo_menu-delete": 0 -105px,
+    "demo_menu-money": 0 -169px,
+    "demo_menu-msg": 0 -233px,
+    "demo_menu-order": 0 -303px,
+    "demo_menu-write": 0 -373px
+);
