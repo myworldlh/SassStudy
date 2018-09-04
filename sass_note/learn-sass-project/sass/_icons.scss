@@ -9,11 +9,11 @@ $tools-sprite-dimensions: true;
 $tools-layout:smart;
 
 // 引入图片后直接生成文件夹下的合图，并且添加了cache buster，改变合图文件后自动更新
-// 可以通过命令行中输入'compass sprite "tools/*.png"'，生成sass下sprites中的scss文件
+// 可以通过命令行中输入'compass sprite "tools/*.png"'，生成sass下sprites中的scss文件，默认是不生成配置合图的scss文件
 @import "tools/*.png";
 
-// 调用，生成以“目录名-图片文”为类名的css样式表
-// all-文件路径-sprites，
+// 调用：all-目录名-sprites
+// 生成：“目录名-图片文”为类名的css样式表
 @include all-tools-sprites();
 
 // 不叫图片名称的元素想用背景图
@@ -37,11 +37,14 @@ $tools-layout:smart;
 // 注意：关闭特性后，*_hover.png和*_active.png不会生成背景css，所以还需要修改文件名，在去指定hover和active伪类，感觉多此一举，不推荐关闭特性
 
 // Helper-Sprites中提供了很多合图的参数方法，可以用于自定义合图方法
-// sprite-map(目录)用于返回合图后的文件目录
 
+// sprite-map(合图png目录)用于返回sprite映射
+
+/*自定义插件retina：生成高清和非高清的合图*/
+/*通过元素调用的方式，传入图片名称,[设置hover],[设置active]*/
 @import "retina";
 
-// 高清和非高清的sprite映射
+// 设置高清和非高清的sprite映射，作为参数生成样式表
 $sprites: sprite-map('retina-version/retina/*.png');
 $sprites2x: sprite-map('retina-version/retina2x/*.png');
 

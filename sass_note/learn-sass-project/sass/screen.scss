@@ -51,7 +51,9 @@
 // "compass/reset"实际上是通过 "compass/reset/utilities"后，再@include gloable-reset操作，两者的效果是相同的
 
 @import "variables",  "mixin";
-@import "normalize";
+// 如果要引入normalize的子模块，则需要先引入normalize-version
+@import "normalize-version";
+@import "normalize/base";
 // @import "compass/reset";
 @import "compass/css3"; // 提供css3的mixin，引入css3相当于默认引入了support模块
 
@@ -104,6 +106,7 @@ $browser-minimum-versions:("ie": "6");
     @extend %font12;
     color: #f00;
 }
+
 .serious-error{
     @extend .error, .col-6;
     border: 1px #f00;
@@ -211,9 +214,10 @@ $base-line-height: 24px;  // 16 * 1.5  文本间距一般是文字大小的1.4�
 
 h1, h2, h3, h4, h5, h6{
     margin: 0;
-    text-align: left;
 }
+
 h1{
+    clear: both;
     @include adjust-font-size-to(48px);  // 自动计算字体和行高的倍率em
 }
 h2{
