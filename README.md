@@ -19,7 +19,7 @@
 * 6.typography模块text设置文本超出...：ellipsis
 * 7.typography模块text设置按钮字隐藏：replace-text
 * 8.大段文本可以使用垂直韵律，规定行高字体
-* 9.helper：引入图片image-url、引入字体文件font-face、组合选择器append-selector、计算图片高：image-height、图片转码base64：inline-image、
-* 10.utilities模块伪类清除浮动：legacy-pie-clearfix，兼容设置浮动float()
+* 9.helper：引入图片image-url、引入字体文件font-face、组合选择器append-selector、计算图片高：image-height、图片转码base64：inline-image
+* 10.utilities模块伪类清除浮动：legacy-pie-clearfix；兼容设置浮动：float()
 * 11.utilities模块合图sprites：参见_icon.scss
 * 12.兼容低版本浏览器参见：hack模块和Minimum模块
