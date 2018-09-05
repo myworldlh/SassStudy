@@ -8,9 +8,10 @@ $menu-color-hover: #fff;
 $menu-bgcolor-hover: #c4261e;
 $menu-border-hover: #c4261e;
 
-// hover,active stylesheets -> key:class, value: background-position
+// hover,active stylesheets -> key:class, value: background-position.
 // background-position from $disable-magic-sprite-selectors: false;
 // then clone the hover background-position and reset $disable-magic-sprite-selectors: true;
+// if change the origin images, should reset the $menu-map.
 $menu-map: (
     "demo_menu-car": 0 -35px,
     "demo_menu-delete": 0 -105px,
