@@ -325,7 +325,7 @@ th {
   width: 1200px;
 }
 /* line 23, ../sass/demo.scss */
-.menu-list {
+ul.menu-list {
   margin: 0;
   padding: 0;
   border: 0;
@@ -335,7 +335,7 @@ th {
   overflow: unset;
 }
 /* line 62, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_horizontal-list.scss */
-.menu-list li {
+ul.menu-list li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0;
@@ -343,7 +343,7 @@ th {
   float: left;
 }
 /* line 22, C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
-.menu-list:after {
+ul.menu-list:after {
   content: "\0020";
   display: block;
   height: 0;
@@ -352,7 +352,7 @@ th {
   visibility: hidden;
 }
 /* line 28, ../sass/demo.scss */
-.menu-list li {
+ul.menu-list li {
   margin: 0 15px;
   padding: 14px 30px 15px 25px;
   width: 118px;
@@ -372,15 +372,15 @@ th {
   transition: color background-color 0.3s linear;
 }
 /* line 40, ../sass/demo.scss */
-.menu-list li:first-child {
+ul.menu-list li:first-child {
   margin-left: 0;
 }
 /* line 43, ../sass/demo.scss */
-.menu-list li:last-child {
+ul.menu-list li:last-child {
   margin-right: 0;
 }
 /* line 46, ../sass/demo.scss */
-.menu-list li.active, .menu-list li:hover {
+ul.menu-list li.active, ul.menu-list li:hover {
   color: #fff;
   background-color: #c4261e;
   border: 1px solid #c4261e;
@@ -389,43 +389,42 @@ th {
   box-shadow: 2px 2px 2px #C1C0C0;
 }
 /* line 52, ../sass/demo.scss */
-.menu-list li .icon {
-  float: left;
-  display: block;
+ul.menu-list li.active .icon.demo_menu-car, ul.menu-list li:hover .icon.demo_menu-car {
+  background-position: 0 -35px;
 }
-/* line 56, ../sass/demo.scss */
-.menu-list li .title {
-  height: 35px;
-  line-height: 36px;
-  font-size: 16px;
-  text-indent: 20px;
+/* line 52, ../sass/demo.scss */
+ul.menu-list li.active .icon.demo_menu-delete, ul.menu-list li:hover .icon.demo_menu-delete {
+  background-position: 0 -105px;
+}
+/* line 52, ../sass/demo.scss */
+ul.menu-list li.active .icon.demo_menu-money, ul.menu-list li:hover .icon.demo_menu-money {
+  background-position: 0 -169px;
+}
+/* line 52, ../sass/demo.scss */
+ul.menu-list li.active .icon.demo_menu-msg, ul.menu-list li:hover .icon.demo_menu-msg {
+  background-position: 0 -233px;
+}
+/* line 52, ../sass/demo.scss */
+ul.menu-list li.active .icon.demo_menu-order, ul.menu-list li:hover .icon.demo_menu-order {
+  background-position: 0 -303px;
+}
+/* line 52, ../sass/demo.scss */
+ul.menu-list li.active .icon.demo_menu-write, ul.menu-list li:hover .icon.demo_menu-write {
+  background-position: 0 -373px;
+}
+/* line 57, ../sass/demo.scss */
+ul.menu-list li .icon {
+  float: left;
+}
+/* line 60, ../sass/demo.scss */
+ul.menu-list li .title {
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
   *zoom: 1;
   *display: inline;
-}
-/* line 65, ../sass/demo.scss */
-.menu-list li.active .icon.demo_menu-car, .menu-list li:hover .icon.demo_menu-car {
-  background-position: 0 -35px;
-}
-/* line 65, ../sass/demo.scss */
-.menu-list li.active .icon.demo_menu-delete, .menu-list li:hover .icon.demo_menu-delete {
-  background-position: 0 -105px;
-}
-/* line 65, ../sass/demo.scss */
-.menu-list li.active .icon.demo_menu-money, .menu-list li:hover .icon.demo_menu-money {
-  background-position: 0 -169px;
-}
-/* line 65, ../sass/demo.scss */
-.menu-list li.active .icon.demo_menu-msg, .menu-list li:hover .icon.demo_menu-msg {
-  background-position: 0 -233px;
-}
-/* line 65, ../sass/demo.scss */
-.menu-list li.active .icon.demo_menu-order, .menu-list li:hover .icon.demo_menu-order {
-  background-position: 0 -303px;
-}
-/* line 65, ../sass/demo.scss */
-.menu-list li.active .icon.demo_menu-write, .menu-list li:hover .icon.demo_menu-write {
-  background-position: 0 -373px;
+  height: 35px;
+  line-height: 36px;
+  font-size: 16px;
+  text-indent: 20px;
 }

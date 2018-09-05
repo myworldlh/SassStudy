@@ -3,12 +3,12 @@
 @import "normalize"; // reset
 @import "compass"; // 引入compass除reset和layout模块
 
-$disable-magic-sprite-selectors: true;
-$demo_menu-sprite-dimensions: true;
+$disable-magic-sprite-selectors: true; // 关闭magic特性（hover、active）
+$demo_menu-sprite-dimensions: true; // 设置背景图片容器宽高（背景图宽高）
 // $demo_menu-layout:smart;
 
-@import "demo_menu/*.png";
-@include all-demo_menu-sprites();
+@import "demo_menu/*.png"; // 引入图片组，生成合图
+@include all-demo_menu-sprites(); // 生成对应合图的样式表
 
 .container{
     background-color: #e3e3e3;
@@ -20,10 +20,10 @@ $demo_menu-sprite-dimensions: true;
             width: 1200px;
     
             @at-root {
-                .menu-list{
-                    @include horizontal-list(false, left);
+                ul.menu-list{
+                    @include horizontal-list(false, left); // 子li标签横向浮动，设置padding属性为false
                     @include legacy-pie-clearfix; // 清除浮动
-                    overflow: unset;
+                    overflow: unset; // 因为li设置了box-shadow，所以这里要修改掉overflow: hidden;
 
                     & li{
                         margin: 0 15px;
@@ -35,7 +35,7 @@ $demo_menu-sprite-dimensions: true;
                         background-color: $menu-bgcolor-default;
                         border: 1px solid $menu-border-default;
                         @include box-shadow(2px 2px 2px #d9d9d9);
-                        @include single-transition(color background-color, 0.3s, linear);
+                        @include single-transition(color background-color, 0.3s, linear); // transition
                     }
                     & li:first-child{
                         margin-left: 0;
@@ -43,29 +43,26 @@ $demo_menu-sprite-dimensions: true;
                     & li:last-child{
                         margin-right: 0;
                     }
-                    & li.active, & li:hover{
+                    & li.active, & li:hover{ // 设置active当前选中和hover后的样式
                         color: $menu-color-hover;
                         background-color: $menu-bgcolor-hover;
                         border: 1px solid $menu-border-hover;
                         @include box-shadow(2px 2px 2px #C1C0C0);
-                    }
-                    & li .icon{
-                        @include float(left);
-                        display: block;
-                    }
-                    & li .title{
-                        height: 35px;
-                        line-height: 36px;
-                        font-size: 16px;
-                        text-indent: 20px;
-                        @include inline-block();
-                    }
-                    & li.active, & li:hover {
-                        @each $key, $value in $menu-map{
+                        @each $key, $value in $menu-map{ // 修改图标
                             .icon.#{$key}{
                                 background-position: $value;
                             }
                        }
+                    }
+                    & li .icon{
+                        @include float(left);
+                    }
+                    & li .title{
+                        @include inline-block();
+                        height: 35px;
+                        line-height: 36px;
+                        font-size: 16px;
+                        text-indent: 20px;
                     }
                 }
             }
