@@ -35,7 +35,7 @@ $demo_menu-sprite-dimensions: true; // 设置背景图片容器宽高（背景�
                         background-color: $menu-bgcolor-default;
                         border: 1px solid $menu-border-default;
                         @include box-shadow(2px 2px 2px #d9d9d9);
-                        @include single-transition(color background-color, 0.3s, linear); // transition
+                        @include single-transition((color,background-color), 0.3s, linear); // transition
                     }
                     & li:first-child{
                         margin-left: 0;
